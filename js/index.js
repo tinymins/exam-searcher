@@ -16,6 +16,8 @@ $(window).load(function(){
     document.addEventListener("backbutton", function() {
         $("#div_config").stop(true, false).fadeOut(300);
     }, false);
+    // fastclick
+    FastClick.attach(document.body);
 });
 function EncodeHtml(s){
     return (typeof s != "string") ? s :
