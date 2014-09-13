@@ -5,6 +5,17 @@ $(window).load(function(){
     $("#btn_search").click(function(){
         StartSearch($("#input_search").val());
     });
+    // 设置
+    $("#btn_config").click(function() {
+        $("#div_config").stop(true, false).fadeTo(300, 1);
+    });
+    $(".select-db").click(function() {
+        $(this).toggleClass("selected");
+    });
+    // 返回键
+    document.addEventListener("backbutton", function() {
+        $("#div_config").stop(true, false).fadeOut(300);
+    }, false);
 });
 function EncodeHtml(s){
     return (typeof s != "string") ? s :
