@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.zhaiyiming.bank-exam"
-        versionCode = "13" 
-        version     = "1.0.3" >
+        id          = "com.zhaiyiming.examsearcher"
+        versionCode = "11" 
+        version     = "1.0.1" >
 
     <!-- versionCode is optional and Android only -->
 
-    <name>柜员“三基本”考题搜索</name>
+    <name>考试题库搜索大师</name>
     <icon src="icon.png" />
     
     <description>
+        考试题库搜索大师：
         2014年度柜员“三基本”培训验证考试题库搜索
     </description>
 
