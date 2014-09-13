@@ -1,0 +1,15 @@
+* { margin: 0; padding: 0; }
+.float_l { float: left; }
+.float_r { float: right; }
+.float_c { clear: both; }
+.button { font-size: 32px; padding: 5px 10px; background-color: #1E90FF; color: #FFF; border: 2px solid #1E90FF; cursor: pointer; }
+.button:hover { background-color: #FFF; color: #1E90FF; }
+body { background-color: #666; }
+
+#input_search { font-size: 32px; width: 100px; padding: 6px 11px; border: 1px solid #1E90FF; }
+#btn_search {  }
+
+.topic-box {  }
+.topic-title { padding: 10px; background-color: #5CACEE; }
+.topic-answer { padding: 10px; background-color: #66CD00; }
+.high-lighted { color: red; }
