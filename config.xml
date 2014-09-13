@@ -19,5 +19,5 @@
         翟一鸣
     </author>
 
-    <preference name="Fullscreen" value="true" />
+    <preference name="Fullscreen" value="false" />
 </widget>
