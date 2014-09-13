@@ -1,4 +1,4 @@
-// Wait for PhoneGap to load
+/*// Wait for PhoneGap to load
 //
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -19,7 +19,7 @@ function onDeviceReady() {
     }
 
     function errorCB(err) {
-        alert("Error processing SQL: "+err.code);
+        alert("Error processing SQL: "+err);
     }
     
     function populateDB(tx) {
@@ -34,4 +34,53 @@ function onDeviceReady() {
     var db = window.openDatabase("topic", "1.0", "topic_database", 1000000);
     db.transaction(populateDB, errorCB, successCB);
     db.transaction(queryDB, errorCB);
+}*/
+// Wait for PhoneGap to load
+//
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// Populate the database 
+//
+function populateDB(tx) {
+    tx.executeSql('DROP TABLE IF EXISTS DEMO');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+}
+
+// Query the database
+//
+function queryDB(tx) {
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+// Query the success callback
+//
+function querySuccess(tx, results) {
+    // this will be empty since no rows were inserted.
+    console.log("Insert ID = " + results.insertId);
+    // this will be 0 since it is a select statement
+    console.log("Rows Affected = " + results.rowAffected);
+    // the number of rows returned by the select statement
+    console.log("Insert ID = " + results.rows.length);
+}
+
+// Transaction error callback
+//
+function errorCB(err) {
+    console.log("Error processing SQL: "+err.code);
+}
+
+// Transaction success callback
+//
+function successCB() {
+    var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+    db.transaction(queryDB, errorCB);
+}
+
+// PhoneGap is ready
+//
+function onDeviceReady() {
+    var db = window.openDatabase("Database", "1.0", "PhoneGap Demo", 200000);
+    db.transaction(populateDB, errorCB, successCB);
 }
