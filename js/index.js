@@ -3,11 +3,23 @@ $(window).load(function(){
         StartSearch($("#input_search").val());
     });
     // 返回键
-/*    document.addEventListener("backbutton", function() {
-        $("#div_config").stop(true, false).fadeOut(300);
-    }, false);*/
-    // fastclick
-    // FastClick.attach(document.body);
+    var eventBackButton;
+    eventBackButton = function() {
+        if ( $("#settingsModal").hasClass('active') ) {
+            $("#settingsModal").removeClass('active');
+        } else {
+            document.removeEventListener("backbutton", eventBackButton, false); //注销返回键
+            //3秒后重新注册
+            window.setTimeout(function() {
+                document.addEventListener("backbutton", eventBackButton, false); //返回键
+            }, 3000);
+        }
+    };
+    document.addEventListener("backbutton", eventBackButton, false);
+    // 菜单键
+    document.addEventListener("menubutton", function() {
+        $("#settingsModal").toggleClass('active');
+    }, false);
 });
 function EncodeHtml(s){
     return (typeof s != "string") ? s :
