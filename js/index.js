@@ -19,7 +19,7 @@ function EncodeHtml(s){
             return r.join("");
     });
 };
-function StartSearch(kw){
+function LoadMore(kw, start, amount) {
     kw = kw || "";
     var matched_topics = []
     if( kw=="" ) {
@@ -29,7 +29,7 @@ function StartSearch(kw){
         }];
     } else {
         // data
-        for (var i = data.length - 1; i >= 0; i--) {
+        for (var i = 0; i < data.length; i++) {
             var topic = data[i];
             if(topic.title.indexOf(kw) >= 0) {
                 matched_topics.push(topic);
@@ -37,23 +37,36 @@ function StartSearch(kw){
         };
     }
     
+    start = start || 0;
+    amount = amount || 15;
+    amount = matched_topics.length - start > amount ? amount: matched_topics.length - start;
     // ui
     var html = "";
-    for (var i = matched_topics.length - 1; i >= 0; i--) {
+    for (var i = start; i < start + amount; i++) {
         var title   = EncodeHtml(matched_topics[i].title).replace(kw,"<span class='high-lighted'>"+kw+"</span>");
         var ans     = matched_topics[i].ans;
         
         html = html + '<li class="table-view-cell">'+title+'</li><li class="table-view-divider">';
-        for (var j = ans.length - 1; j >= 0; j--) {
+        for (var j = 0; j < ans.length; j++) {
             html = html + EncodeHtml( '> ' + ans[j] );
-            if( j > 0 ) {
+            if( j < ans.length - 1 ) {
                 html += '<br>';
             }
         };
         html = html + '</li>';
     };
-    // ad
-    html = html + '<li class="table-view-cell" style="background-color:#999;">翟一鸣 @ ZhaiYiMing.CoM</li>';
     
-    $(".topic-list").html(html);
+    if ( data.length > start + amount ) {
+        // load more
+        html += '<button class="btn btn-block btn-outlined" onclick="javascript:$(this).remove();LoadMore(\''+kw+'\','+ (start+amount) +');">加载更多…</button>';
+    } else {
+        // ad
+        html = html + '<li class="table-view-cell" style="background-color:#999;">翟一鸣 @ ZhaiYiMing.CoM</li>';
+    }
+    
+    $(".topic-list").append(html);
+}
+function StartSearch(kw, start, amount){
+    $(".topic-list").html("");
+    LoadMore(kw, start, amount);
 }
