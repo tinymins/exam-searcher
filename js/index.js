@@ -9,7 +9,7 @@ $(window).load(function(){
             $("#settingsModal").removeClass('active');
         } else {
             document.removeEventListener("backbutton", eventBackButton, false); //注销返回键
-            //3秒后重新注册
+            // 3秒后重新注册
             window.setTimeout(function() {
                 document.addEventListener("backbutton", eventBackButton, false); //返回键
             }, 3000);
