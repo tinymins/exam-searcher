@@ -1,16 +1,6 @@
 $(window).load(function(){
-    $(window).resize(function() {
-        $("#input_search").width($(window).width() - $("#btn_search").width() - 48);
-    }).resize();
-    $("#btn_search").click(function(){
+    $("#input_search").keyup(function(){
         StartSearch($("#input_search").val());
-    });
-    // 设置
-    $("#btn_config").click(function() {
-        $("#div_config").stop(true, false).fadeTo(300, 1);
-    });
-    $(".select-db").click(function() {
-        $(this).toggleClass("selected");
     });
     // 返回键
     document.addEventListener("backbutton", function() {
@@ -31,34 +21,39 @@ function EncodeHtml(s){
 };
 function StartSearch(kw){
     kw = kw || "";
-    if(kw=="") { alert('请输入关键字。\n/w \\'); return; }
-    // data
     var matched_topics = []
-    for (var i = data.length - 1; i >= 0; i--) {
-        var topic = data[i];
-        if(topic.title.indexOf(kw) >= 0) {
-            matched_topics.push(topic);
-        }
-    };
+    if( kw=="" ) {
+        matched_topics = [{
+            title : '请输入关键字。\n/w \\',
+            ans : []
+        }];
+    } else {
+        // data
+        for (var i = data.length - 1; i >= 0; i--) {
+            var topic = data[i];
+            if(topic.title.indexOf(kw) >= 0) {
+                matched_topics.push(topic);
+            }
+        };
+    }
     
     // ui
     var html = "";
     for (var i = matched_topics.length - 1; i >= 0; i--) {
-        var title   = EncodeHtml(matched_topics[i].title).replace(kw,"<a class='high-lighted'>"+kw+"</a>");
+        var title   = EncodeHtml(matched_topics[i].title).replace(kw,"<span class='high-lighted'>"+kw+"</span>");
         var ans     = matched_topics[i].ans;
         
-        html = html + '<div class="topic-box"><div class="topic-title">'+title+'</div><div class="topic-answer">';
+        html = html + '<li class="table-view-cell">'+title+'</li><li class="table-view-divider">';
         for (var j = ans.length - 1; j >= 0; j--) {
             html = html + EncodeHtml( '> ' + ans[j] );
             if( j > 0 ) {
                 html += '<br>';
             }
         };
-        html = html + '</div></div>';
+        html = html + '</li>';
     };
     // ad
-    html = html + '<div class="topic-box"><div class="topic-title" style="background-color:#999;">翟一鸣 @ ZhaiYiMing.CoM</div></div>';
+    html = html + '<li class="table-view-cell" style="background-color:#999;">翟一鸣 @ ZhaiYiMing.CoM</li>';
     
-    $("#main").html(html);
-    $(window).resize();
+    $(".topic-list").html(html);
 }

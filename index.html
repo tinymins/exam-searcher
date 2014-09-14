@@ -1,74 +1,89 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-<title>2014年度柜员“三基本”培训验证考试题库搜索 - 翟一鸣</title>
-<script src="phonegap.js"></script>
-<script type="text/javascript" src="js/jquery.1.8.2.min.js"></script>
-<script type="text/javascript" src="js/fastclick.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/data.js"></script>
-<script type="text/javascript" src="js/database.js"></script>
-<link rel="stylesheet" type="text/css" href="css/index.css">
-</head>
-<body>
-    <div id="search">
-        <input id="input_search" type="text" class="float_l" />
-        <div id="btn_search" class="button float_l">搜索</div>
-        <div class="float_c"></div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>2014年度柜员“三基本”培训验证考试题库搜索 - 翟一鸣</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+    <!-- <link href="css/ratchet-theme-ios.min.css" rel="stylesheet"> -->
+
+    <!-- Include the compiled Ratchet JS -->
+    <script src="js/ratchet.js"></script>
+    
+    <script src="phonegap.js"></script>
+    <script type="text/javascript" src="js/jquery.1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/database.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <a class="icon icon-gear pull-right" href="#settingsModal"></a>
+      <h1 class="title">考试题库搜索大师</h1>
+    </header>
+
+    <div class="bar bar-standard bar-header-secondary">
+      <input type="search" id="input_search" placeholder="搜索">
     </div>
-    <div id="main">
-        <div class="topic-box">
-            <div class="topic-title">请在上方输入框输入关键字，然后点击搜索即可显示匹配的题目。</div>
-            <div class="topic-answer">&gt 关键字就是在题目中取若干个连续的文字<br>&gt 建议取两个连续的词语匹配概率更高<br>&gt 注意不要输入错别字哦~</div>
+
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+      <ul class="table-view topic-list">
+        <li class="table-view-cell">请在上方输入框输入关键字，然后点击搜索即可显示匹配的题目。</li>
+        <li class="table-view-divider">&gt 关键字就是在题目中取若干个连续的文字<br>&gt 建议取两个连续的词语匹配概率更高<br>&gt 注意不要输入错别字哦~</li>
+      </ul>
+    </div>
+    <!-- Settings modal -->
+    <div id="settingsModal" class="modal">
+      <header class="bar bar-nav">
+        <a class="icon icon-close pull-right" href="#settingsModal"></a>
+        <h1 class="title">Settings</h1>
+      </header>
+
+      <div class="content">
+        <form class="input-group">
+          <input type="text" placeholder="Full name">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Username">
+        </form>
+
+        <h5 class="content-padded">App settings</h5>
+
+        <ul class="table-view">
+          <li class="table-view-cell media">
+            <span class="media-object pull-left icon icon-sound"></span>
+            <div class="media-body">
+              Enable sounds
+            </div>
+            <div class="toggle">
+              <div class="toggle-handle"></div>
+            </div>
+          </li>
+          <li class="table-view-cell media">
+            <span class="media-object pull-left icon icon-person"></span>
+            <div class="media-body">
+              Parental controls
+            </div>
+            <div class="toggle">
+              <div class="toggle-handle"></div>
+            </div>
+          </li>
+        </ul>
+        <div class="content-padded">
+          <button class="btn btn-positive btn-block">Save settings</button>
         </div>
-    </div>
-    <div id="config">
-        <div id="btn_config" class="button">设置</div>
-    </div>
-    <!-- 下面是设置面板 -->
-    <div id="div_config">
-        <h2 class="center">试题库选择</h2>
-        <hr/>
-        <div class="select-db-container">
-            <div class="select-db selected">测试题库1</div>
-            <div class="select-db">测试题库2</div>
-            <div class="select-db">测试题库3</div>
-            <div class="select-db">测试题库4</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-            <div class="select-db">测试题库5</div>
-        </div>
-    </div>
-</body>
+      </div>
+    </div><!-- /.modal -->
+  </body>
 </html>
