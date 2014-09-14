@@ -30,7 +30,7 @@
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
       <a class="icon icon-gear pull-right" href="#settingsModal"></a>
-      <h1 class="title">考试题库搜索大师</h1>
+      <h1 class="title">题库搜索大师</h1>
     </header>
 
     <div class="bar bar-standard bar-header-secondary">
@@ -49,40 +49,43 @@
     <div id="settingsModal" class="modal">
       <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#settingsModal"></a>
-        <h1 class="title">Settings</h1>
+        <h1 class="title">设置</h1>
       </header>
 
       <div class="content">
-        <form class="input-group">
-          <input type="text" placeholder="Full name">
-          <input type="email" placeholder="Email">
-          <input type="text" placeholder="Username">
-        </form>
-
-        <h5 class="content-padded">App settings</h5>
-
+        <!-- 选择题库 -->
+        <h5 class="content-padded">题库选择</h5>
         <ul class="table-view">
-          <li class="table-view-cell media">
-            <span class="media-object pull-left icon icon-sound"></span>
-            <div class="media-body">
-              Enable sounds
-            </div>
+          <li class="table-view-cell">
+            测试题库 1
             <div class="toggle">
               <div class="toggle-handle"></div>
             </div>
           </li>
-          <li class="table-view-cell media">
-            <span class="media-object pull-left icon icon-person"></span>
-            <div class="media-body">
-              Parental controls
+          <li class="table-view-cell">
+            测试题库 2
+            <div class="toggle active">
+              <div class="toggle-handle"></div>
             </div>
+          </li>
+          <li class="table-view-cell">
+            测试题库 3
             <div class="toggle">
               <div class="toggle-handle"></div>
             </div>
           </li>
         </ul>
+        <!-- 题库管理 -->
+        <h5 class="content-padded">在线题库</h5>
+        <ul class="table-view">
+          <li class="table-view-cell">测试题库 1<button class="btn btn-negative">删除</button></li>
+          <li class="table-view-cell">测试题库 2<button class="btn">使用中</button></li>
+          <li class="table-view-cell">测试题库 3<button class="btn btn-primary">更新</button></li>
+          <li class="table-view-cell">测试题库 4<button class="btn btn-positive">下载</button></li>
+          <li class="table-view-cell">测试题库 5<button class="btn btn-negative">删除</button></li>
+        </ul>
         <div class="content-padded">
-          <button class="btn btn-positive btn-block">Save settings</button>
+          <a href="#settingsModal" class="btn btn-positive btn-block">返回</a>
         </div>
       </div>
     </div><!-- /.modal -->

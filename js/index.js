@@ -24,7 +24,7 @@ function LoadMore(kw, start, amount) {
     var matched_topics = []
     if( kw=="" ) {
         matched_topics = [{
-            title : '请输入关键字。\n/w \\',
+            title : '请输入关键字。/w \\',
             ans : []
         }];
     } else {
@@ -35,6 +35,12 @@ function LoadMore(kw, start, amount) {
                 matched_topics.push(topic);
             }
         };
+        if ( matched_topics.length == 0 ) {
+            matched_topics = [{
+                title : '木有找到符合条件的结果。ˊ_>ˋ',
+                ans : []
+            }];
+        }
     }
     
     start = start || 0;
