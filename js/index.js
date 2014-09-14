@@ -3,11 +3,11 @@ $(window).load(function(){
         StartSearch($("#input_search").val());
     });
     // 返回键
-    document.addEventListener("backbutton", function() {
+/*    document.addEventListener("backbutton", function() {
         $("#div_config").stop(true, false).fadeOut(300);
-    }, false);
+    }, false);*/
     // fastclick
-    FastClick.attach(document.body);
+    // FastClick.attach(document.body);
 });
 function EncodeHtml(s){
     return (typeof s != "string") ? s :
