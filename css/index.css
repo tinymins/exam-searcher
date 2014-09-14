@@ -1,2 +1,7 @@
 .topic-list > li { padding: 11px 15px 11px 15px; }
 .high-lighted { color: red; }
+.content { width: 100%; height: 100%; position: inherit; }
+::-webkit-scrollbar {      /*整体*/ width: 5px; height:5px; }
+::-webkit-scrollbar-track {/*轨道*/ border-radius: 2px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0.1); }
+::-webkit-scrollbar-thumb {/*滑块*/ border-radius: 0px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb:hover {   border-radius: 0px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0.4); }
