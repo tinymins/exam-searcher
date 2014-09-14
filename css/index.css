@@ -5,9 +5,9 @@
 ::-webkit-scrollbar-thumb:hover {   border-radius: 0px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0.4); }
 
 /* ratchet bug fix */
-/* .content { width: 100%; height: 100%; position: inherit; } */
-body { position: inherit; }
-.modal { display: none; }
+body { position: static; }
+.content { position: absolute; }
+.modal { display: none; position: absolute; }
 .modal.active { display: block; }
 
 /* custom css */
