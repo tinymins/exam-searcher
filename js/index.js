@@ -56,12 +56,12 @@ function LoadMore(kw, start, amount) {
         html = html + '</li>';
     };
     
-    if ( data.length > start + amount ) {
+    if ( matched_topics.length > start + amount ) {
         // load more
         html += '<button class="btn btn-block btn-outlined" onclick="javascript:$(this).remove();LoadMore(\''+kw+'\','+ (start+amount) +');">加载更多…</button>';
     } else {
         // ad
-        html = html + '<li class="table-view-cell" style="background-color:#999;">翟一鸣 @ ZhaiYiMing.CoM</li>';
+        html = html + '<h1 class="title">翟一鸣 @ ZhaiYiMing.CoM</h1>';
     }
     
     $(".topic-list").append(html);
