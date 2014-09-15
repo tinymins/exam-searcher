@@ -29,12 +29,12 @@ $(window).load(function(){
         window.data = [];
         window.dataMask = mask;
         db.list(function(l) {
-            for (var i = 0; i < l.length; i++) {
+            for (var i = 0; i < l.length; i++) {alert(l[i].enabled);
                 if( l[i].enabled == 1 ) {
                     db.select(l[i].id, function(data) {
-                        var topics = $.parseJSON(data);
-                        for (var i = 0; i < topics.length; i++) {
-                            if(window.dataMask == mask)
+                        var topics = $.parseJSON(data);alert(topics.length);
+                        if(window.dataMask == mask)
+                            for (var i = 0; i < topics.length; i++) {
                                 window.data.push( topics[i] );
                         };
                     });
