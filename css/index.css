@@ -1,3 +1,5 @@
+* { word-break: break-all; }
+
 /* scroll bar css */
 ::-webkit-scrollbar {      /*整体*/ width: 5px; height:5px; }
 ::-webkit-scrollbar-track {/*轨道*/ border-radius: 2px; -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0.1); }
@@ -12,4 +14,6 @@ body { position: static; }
 
 /* custom css */
 .topic-list > li { padding: 11px 15px 11px 15px; }
+.local-topic > li { padding: 11px 90px 11px 15px; }
+.online-topic > li { padding: 11px 75px 11px 15px; }
 .high-lighted { color: red; }

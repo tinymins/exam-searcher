@@ -20,9 +20,9 @@
     
     <script src="phonegap.js"></script>
     <script type="text/javascript" src="js/jquery.1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
-    <!--script type="text/javascript" src="js/database.js"></script-->
+    <script type="text/javascript" src="js/database.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <link href="css/index.css" rel="stylesheet">
   </head>
   <body>
@@ -48,14 +48,14 @@
     <!-- Settings modal -->
     <div id="settingsModal" class="modal">
       <header class="bar bar-nav">
-        <a class="icon icon-close pull-right" href="#settingsModal"></a>
+        <a class="icon icon-close pull-right btn-close-setting" href="#settingsModal"></a>
         <h1 class="title">设置</h1>
       </header>
 
       <div class="content">
         <!-- 选择题库 -->
-        <h5 class="content-padded">题库选择</h5>
-        <ul class="table-view">
+        <h5 class="content-padded">本地题库</h5>
+        <ul class="table-view local-topic">
           <li class="table-view-cell">
             测试题库 1
             <div class="toggle">
@@ -77,7 +77,7 @@
         </ul>
         <!-- 题库管理 -->
         <h5 class="content-padded">在线题库</h5>
-        <ul class="table-view">
+        <ul class="table-view online-topic">
           <li class="table-view-cell">测试题库 3<button class="btn btn-primary">更新</button></li>
           <li class="table-view-cell">测试题库 1<button class="btn btn-negative">删除</button></li>
           <li class="table-view-cell">测试题库 2<button class="btn btn-negative">删除</button></li>
@@ -85,7 +85,7 @@
           <li class="table-view-cell">测试题库 5<button class="btn btn-positive">下载</button></li>
         </ul>
         <div class="content-padded">
-          <button class="btn btn-positive btn-block" onclick="javascript:$('#settingsModal').removeClass('active');">返回</button>
+          <button class="btn btn-positive btn-block btn-close-setting" onclick="javascript:$('#settingsModal').removeClass('active');">返回</button>
           <button class="btn btn-negative btn-block" onclick="javascript:navigator.app.exitApp();">退出</button>
         </div>
       </div>
