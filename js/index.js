@@ -59,15 +59,15 @@ $(window).load(function(){
                     + '<div class="toggle'+(l[i].enabled==1?' active':'')+'" data-id="' + l[i].id + '"><div class="toggle-handle"></div></div></li>';
         };
         $('.local-topic').html(html);
-        $('.local-topic').find('.toggle').each(function(){ this.addEventListener('toggle', function (e) {alert( $(e.target).data('id'));
-            var id = $(e.target).data('id');
-            if ( e.detail.isActive ) {
+        $('.local-topic').find('.toggle').unbind().click(function(){ /*alert( $(e.target).data('id'));*/
+            var id = $(this).data('id');alert($(this).hasClass('active'));
+            if ( $(this).hasClass('active') ) {
                 db.enable(id);
             } else {
                 db.disable(id);
             }
             loadTopicData();
-        }); });
+        });
         // 在线题库
         $.getJSON("http://exam_searcher.jd-app.com/data.php", function(r) {
             var html = "";
