@@ -10,9 +10,6 @@ $(window).load(function(){
     $("#input_search").keyup(function(){
         StartSearch($("#input_search").val());
     });
-    $(".btn-close-setting").live('mousedown touchstart', function() {
-        StartSearch($("#input_search").val());
-    });
     // 返回键
     var eventBackButton;
     eventBackButton = function() {
@@ -41,10 +38,12 @@ $(window).load(function(){
                 if( l[i].enabled == 1 ) {
                     db.select(l[i].id, function(data) {
                         var topics = $.parseJSON(data);
-                        if(window.dataMask == mask)
+                        if(window.dataMask == mask) {
                             for (var i = 0; i < topics.length; i++) {
                                 window.data.push( topics[i] );
-                        };
+                            }
+                            StartSearch($("#input_search").val());
+                        }
                     });
                 }
             };
