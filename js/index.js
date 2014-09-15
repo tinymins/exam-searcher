@@ -1,3 +1,11 @@
+// fix ratchet bugs
+if ( ! window.CustomEvent ) {
+  window.CustomEvent = function(type, config) {
+    var e = document.createEvent("CustomEvent");
+    e.initCustomEvent(type, config.bubbles, config.cancelable, config.detail);
+    return e;
+  };
+}
 $(window).load(function(){
     $("#input_search").keyup(function(){
         StartSearch($("#input_search").val());
@@ -41,9 +49,17 @@ $(window).load(function(){
                 }
             };
         });
-    }
-    loadTopicData();
+    };
     // 初始化设置面板
+    $('.local-topic')[0].addEventListener('toggle', function (e) {
+        var id = $(e.target).data('id');
+        if ( e.detail.isActive ) {
+            db.enable(id);
+        } else {
+            db.disable(id);
+        }
+        loadTopicData();
+    });
     db.list(function(l) {
         var getTopic = function(id) {
             for (var i = l.length - 1; i >= 0; i--) {
@@ -59,15 +75,6 @@ $(window).load(function(){
                     + '<div class="toggle'+(l[i].enabled==1?' active':'')+'" data-id="' + l[i].id + '"><div class="toggle-handle"></div></div></li>';
         };
         $('.local-topic').html(html);
-        $('.local-topic').find('.toggle').unbind().bind('toggle', function(){ /*alert( $(e.target).data('id'));*/
-            var id = $(this).data('id');alert($(this).hasClass('active'));
-            if ( $(this).hasClass('active') ) {
-                db.enable(id);
-            } else {
-                db.disable(id);
-            }
-            loadTopicData();
-        });
         // 在线题库
         $.getJSON("http://exam_searcher.jd-app.com/data.php", function(r) {
             var html = "";
@@ -128,6 +135,7 @@ $(window).load(function(){
             });
         });
     });
+    loadTopicData();
 });
 function EncodeHtml(s){
     return (typeof s != "string") ? s :
