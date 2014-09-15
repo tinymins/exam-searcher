@@ -59,7 +59,7 @@ $(window).load(function(){
                     + '<div class="toggle'+(l[i].enabled==1?' active':'')+'" data-id="' + l[i].id + '"><div class="toggle-handle"></div></div></li>';
         };
         $('.local-topic').html(html);
-        $('.local-topic').find('.toggle').unbind().click(function(){ /*alert( $(e.target).data('id'));*/
+        $('.local-topic').find('.toggle').unbind().bind('toggle', function(){ /*alert( $(e.target).data('id'));*/
             var id = $(this).data('id');alert($(this).hasClass('active'));
             if ( $(this).hasClass('active') ) {
                 db.enable(id);
