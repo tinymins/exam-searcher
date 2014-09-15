@@ -150,7 +150,14 @@ function LoadMore(kw, start, amount) {
     kw = kw || "";
     var matched_topics = []
     if( kw=="" ) {
-        matched_topics = [{
+        matched_topics = [ {
+            title : '请在上方输入框输入关键字，然后点击搜索即可显示匹配的题目。',
+            ans : [
+                '关键字就是在题目中取若干个连续的文字',
+                '建议取两个连续的词语匹配概率更高',
+                '注意不要输入错别字哦~'
+            ]
+        }, {
             title : '请输入关键字。/w \\',
             ans : []
         }];
