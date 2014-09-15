@@ -29,10 +29,10 @@ $(window).load(function(){
         window.data = [];
         window.dataMask = mask;
         db.list(function(l) {
-            for (var i = 0; i < l.length; i++) {alert(l[i].enabled);
+            for (var i = 0; i < l.length; i++) {
                 if( l[i].enabled == 1 ) {
                     db.select(l[i].id, function(data) {
-                        var topics = $.parseJSON(data);alert(topics.length);
+                        var topics = $.parseJSON(data);
                         if(window.dataMask == mask)
                             for (var i = 0; i < topics.length; i++) {
                                 window.data.push( topics[i] );
@@ -119,7 +119,7 @@ $(window).load(function(){
             });
         });
     });
-    $('.local-topic')[0].addEventListener('toggle', function (e) {
+    $('.local-topic')[0].addEventListener('toggle', function (e) {alert( $(e.target).data('id'));
         var id = $(e.target).data('id');
         if ( e.detail.isActive ) {
             db.enable(id);
