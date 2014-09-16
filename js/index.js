@@ -114,6 +114,7 @@ $(window).load(function(){
                                 dataType : 'json',
                                 success : function(r) {
                                     db.insert(r.id, r.name, r.version, r.data);
+                                    loadTopicData();
                                     $('.local-topic').append('<li class="table-view-cell" id="local_topic_' + r.id + '">' + EncodeHtml(r.name) + '<div class="toggle active" data-id="' + r.id + '"><div class="toggle-handle"></div></div></li>');
                                     $(me).text('删除').addClass('btn-negative topic-delete');
                                 },
@@ -127,7 +128,8 @@ $(window).load(function(){
                                 url : "http://examsearcher.derzh.com/data.php?id="+id,
                                 dataType : 'json',
                                 success : function(r) {
-                                    db.insert(r.id, r.name, r.version, r.data);
+                                    db.update(r.id, r.name, r.version, r.data);
+                                    loadTopicData();
                                     $(me).text('删除').addClass('btn-negative topic-delete');
                                 },
                                 error : function() {
@@ -136,6 +138,7 @@ $(window).load(function(){
                             });
                         } else if ( $(me).hasClass('topic-delete') ) {
                             db.delete(id);
+                            loadTopicData();
                             $('#local_topic_'+id).remove();
                             $(me).text('下载').removeClass('btn-negative topic-delete').addClass('btn-positive topic-insert');
                         }
