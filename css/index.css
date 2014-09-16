@@ -13,6 +13,7 @@ body { position: static; }
 .modal.active { display: block; }
 
 /* custom css */
+.min-margin > li { padding: 11px 15px 11px 15px; }
 .topic-list > li { padding: 11px 15px 11px 15px; }
 .local-topic > li { padding: 11px 90px 11px 15px; }
 .online-topic > li { padding: 11px 75px 11px 15px; }

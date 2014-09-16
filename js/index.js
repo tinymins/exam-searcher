@@ -7,6 +7,19 @@ if ( ! window.CustomEvent ) {
   };
 }
 window.data = [];
+window.confirm = function(title, content, onpositive, onnegative) {
+    $('.confirm-title').text(title);
+    $('.confirm-content').text(content);
+    $('.confirm-positive').unbind().click(function() {
+        onpositive && onpositive();
+        $('#confirmModal').removeClass('active');
+    });
+    $('.confirm-negative').unbind().click(function() {
+        onnegative && onnegative();
+        $('#confirmModal').removeClass('active');
+    });
+    $('#confirmModal').addClass('active');
+}
 $(window).load(function(){
     $("#input_search").keyup(function(){
         StartSearch($("#input_search").val());
@@ -143,6 +156,12 @@ $(window).load(function(){
                             $(me).text('下载').removeClass('btn-negative topic-delete').addClass('btn-positive topic-insert');
                         }
                     });
+                    // 弹出更新提示
+                    if ($('.topic-update').length > 0 && !$('#settingsModal').hasClass('active')) {
+                        confirm('发现题库更新，是否立即查看？', '发现'+$('.topic-update').length+'个题库有新版本，建议立即更新到最新版本。', function() {
+                            $('#settingsModal').addClass('active');
+                        }, function() {});
+                    }
                 }, 
                 error : function() {
                     var html = '<li class="table-view-cell media"><a class="navigate-right"><span class="media-object pull-left icon icon-refresh"></span><div class="media-body">重新加载</div></a></li>';
