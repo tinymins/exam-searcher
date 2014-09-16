@@ -185,7 +185,12 @@ function LoadMore(kw, start, amount) {
                 matched_topics.push(topic);
             }
         };
-        if ( matched_topics.length == 0 ) {
+        if ( data.length == 0 ) {
+            matched_topics = [{
+                title : '您的题库为空。ˊ_>ˋ<br>请点击左上角齿轮进入设置面板下载并启用至少一个题库。',
+                ans : []
+            }];
+        } else if ( matched_topics.length == 0 ) {
             matched_topics = [{
                 title : '木有找到符合条件的结果。ˊ_>ˋ',
                 ans : []
