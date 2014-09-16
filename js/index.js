@@ -80,7 +80,7 @@ $(window).load(function(){
             // 在线题库
             $(".online-topic").html('<li class="table-view-cell table-view-divider">加载中…</li>');
             $.ajax({
-                url : "http://exam_searcher.jd-app.com/data.php",
+                url : "http://examsearcher.derzh.com/data.php",
                 dataType : 'json',
                 success : function(r) {
                     var html = "";
@@ -109,7 +109,7 @@ $(window).load(function(){
                         if ( $(me).hasClass('topic-insert') ) { // insert
                             $(me).text('下载中').removeClass('btn-positive topic-insert');
                             $.ajax({
-                                url : "http://exam_searcher.jd-app.com/data.php?id="+id,
+                                url : "http://examsearcher.derzh.com/data.php?id="+id,
                                 dataType : 'json',
                                 success : function(r) {
                                     db.insert(r.id, r.name, r.version, r.data);
@@ -123,7 +123,7 @@ $(window).load(function(){
                         } else if ( $(me).hasClass('topic-update') ) {
                             $(me).text('下载中').removeClass('btn-primary topic-update');
                             $.ajax({
-                                url : "http://exam_searcher.jd-app.com/data.php?id="+id,
+                                url : "http://examsearcher.derzh.com/data.php?id="+id,
                                 dataType : 'json',
                                 success : function(r) {
                                     db.insert(r.id, r.name, r.version, r.data);
