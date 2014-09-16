@@ -33,6 +33,7 @@ $(window).load(function(){
         var mask = parseInt( Math.random() * 10000000 );
         window.data = [];
         window.dataMask = mask;
+        StartSearch($("#input_search").val());
         db.list(function(l) {
             for (var i = 0; i < l.length; i++) {
                 if( l[i].enabled == 1 ) {
