@@ -6,6 +6,7 @@ if ( ! window.CustomEvent ) {
     return e;
   };
 }
+window.data = [];
 $(window).load(function(){
     $("#input_search").keyup(function(){
         StartSearch($("#input_search").val());
