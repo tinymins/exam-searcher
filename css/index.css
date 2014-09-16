@@ -18,3 +18,6 @@ body { position: static; }
 .local-topic > li { padding: 11px 90px 11px 15px; }
 .online-topic > li { padding: 11px 75px 11px 15px; }
 .high-lighted { color: red; }
+
+.topic-list.high-light > .table-view-cell { background-color: #5CACEE; color: #000; }
+.topic-list.high-light > .table-view-divider { background-color: #66CD00; color: #000; }

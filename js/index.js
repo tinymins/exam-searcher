@@ -65,6 +65,19 @@ $(window).load(function(){
         });
     };
     // 初始化设置面板
+    if(localStorage.bHighlight == '1') {
+        $('#tglHighlight').addClass('active');
+        $('.topic-list').addClass('high-light');
+    }
+    $('#tglHighlight')[0].addEventListener('toggle', function (e) {
+        localStorage.bHighlight = e.detail.isActive ? '1' : '0';
+        if (e.detail.isActive) {
+            $('.topic-list').addClass('high-light');
+        } else {
+            $('.topic-list').removeClass('high-light');
+        }
+    });
+    
     $('.local-topic')[0].addEventListener('toggle', function (e) {
         var id = $(e.target).data('id');
         if ( e.detail.isActive ) {
